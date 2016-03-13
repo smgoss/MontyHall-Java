@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * Game.java
  * @author Stephen Goss
- * A class to play the Monty Hall problem.
+ * A class to play the Monty Hall problem/game.
  */
 public class Game {
 	// The list of doors to pick from.

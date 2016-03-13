@@ -1,6 +1,7 @@
 /**
- * An enumeration representing the prize
+ * Prize.java
  * @author Stephen Goss
+ * A enumeration representing a prize.
  */
 public enum Prize {
 	ZONK, CAR;

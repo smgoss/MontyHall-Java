@@ -1,4 +1,9 @@
-
+/**
+ * Door.java
+ * @author Stephen Goss
+ * A class representing a Door in the Monty Hall problem.
+ *
+ */
 public class Door {
 	// The number of the door in the game.
 	// It should be positive and greater 
@@ -22,9 +27,6 @@ public class Door {
 		this.doorNumber=doorNumber;
 		this.prize=prize;
 	}
-	/*public Door(Prize prize){
-		this.prize=prize;
-	}*/
 	/**
 	 * Gets the number of this door.
 	 * @return doorNumber - The number of this door
@@ -45,12 +47,4 @@ public class Door {
 	public void setPrize(Prize prize){
 		this.prize = prize;
 	}
-	
-	/*public void setPlayerDoor(){
-		this.playerDoor = true;
-	}
-	public boolean isPlayerDoor(){
-		return playerDoor;
-	}*/
-
 }

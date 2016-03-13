@@ -26,6 +26,7 @@ public class Play {
 		int numDoors = 0;
 		int numTrials = 0;
 		int playerChoice = 0;
+		// The user may enter bad input.
 		try{
 			System.out.print("How many doors would you like to play with? ");
 			Scanner s1 = new Scanner(System.in);
