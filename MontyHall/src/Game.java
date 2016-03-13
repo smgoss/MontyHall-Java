@@ -20,8 +20,8 @@ public class Game {
 		
 		Random r = new Random();
 		int winner = r.nextInt(this.size);
+		//System.out.println("Winner: "+winner);
 		Door winningDoor=new Door(winner+1, Prize.CAR);
-		System.out.println("The winning door is " + winningDoor.getNumber());
 		for(int i = 0; i < this.size; i++){
 			if(i != winner){
 				doors.add(i,new Door(i+1,Prize.ZONK));
@@ -34,8 +34,6 @@ public class Game {
 	}
 	private void setPlayerDoor(int door){
 		player.setDoor(doors.remove(door-1));
-		System.out.println("Player Door is: "+player.getDoor().getNumber());
-		//System.out.println("Next Door: " +doors.remove(door).getNumber());
 	}
 	public void shuffleDoors(){
 		Random r = new Random();
@@ -52,19 +50,22 @@ public class Game {
 	public void revealDoors(){
 		int counter = 0;
 		int mysize = doors.size();
-		while(mysize > 1){
+		while(doors.size() > 1){
+			//System.out.println("Size: "+doors.size());
+			//System.out.println("Counter: " + counter);
 			if (doors.get(counter).getPrize() != Prize.CAR){
 				Door thedoor = doors.remove(counter);
-				System.out.println("Door: " + thedoor.getNumber() + " is a " + thedoor.getPrize().toString());
-				mysize--;
+				//System.out.println("Door: " + thedoor.getNumber() + " is a " + thedoor.getPrize().toString());
+				//mysize--;
 			} else {
+				//System.out.println("Found a Car behind door "+doors.get(counter).getNumber());
 				counter++;
 			}
 			
 		}	
 	}
 	public boolean checkWinner(){
-		System.out.println("The player wins a: "+player.getDoor().getPrize().toString());
+		//System.out.println("The player wins a: "+player.getDoor().getPrize().toString());
 		if (player.getDoor().getPrize() == Prize.CAR){
 			return true;
 		} else {
@@ -77,10 +78,20 @@ public class Game {
 			Door tmp = doors.remove(0);
 			doors.add(player.getDoor());
 			player.setDoor(tmp);
-			System.out.println("New Player Door is: "+player.getDoor().getNumber());
+			//System.out.println("New Player Door is: "+player.getDoor().getNumber());
 		}
 	}
-	public static void main(String[] args){
+	public boolean playGame(boolean doorChange){
+		Random r = new Random();
+		this.buildGame();
+		this.setPlayerDoor(r.nextInt(this.size)+1);
+		this.shuffleDoors();
+		this.revealDoors();
+		this.switchDoor(doorChange);
+		return this.checkWinner();
+	}
+
+	/*public static void main(String[] args){
 		double wins = 0;
 		for( int i = 0; i < 1000000; i ++){
 			Game theGame = new Game(100);
@@ -101,8 +112,8 @@ public class Game {
 		double percent = ( wins / 1000000 ) * 100;
 		System.out.println("Wins = "+wins);
 		System.out.println("Percent: " + percent);
+		*/
 		
-		
-	}
+	//}
 }
 
